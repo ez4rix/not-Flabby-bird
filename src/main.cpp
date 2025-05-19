@@ -1,13 +1,15 @@
-#include <iostream>
-#include "include/raylib.h"
+
+#include "Player.h"
 
 int main()
 {
-    int screenWidth = 400;
+    int screenWidth = 500;
     int screenHeight = 700;
 
     InitWindow(screenWidth, screenHeight, "first window");
     SetTargetFPS(60);
+
+    Player player = Player(0, 0, 50, 50, {0, 0.1});
 
 
     while (!WindowShouldClose())
@@ -16,6 +18,8 @@ int main()
         BeginDrawing();
 
             ClearBackground(BLACK);
+            player.Update();
+
             
         EndDrawing();
     }

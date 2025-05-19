@@ -6,7 +6,7 @@ OBJ_DIR = build
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 
-COMPILER_FLAG = -Wall -Werror
+COMPILER_FLAG = -Wall -Werror -Iinclude
 LINKER_FLAG = -Iinclude -Llib -lraylib -lwinmm -lgdi32
 
 all: $(EXEC)
