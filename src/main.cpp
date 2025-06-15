@@ -1,6 +1,6 @@
 #include <iostream>
 #include "simulation.hpp"
-#include "Pause.hpp"
+#include "Button.hpp"
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
 
     Simulation simulation{cellSize, 720, 720};
 
-    Button pause;
+    Button pause({500, 730, 210, 60}, "Pause", "Play", 1);
 
     int generation = 0;
     int liveCells = 0;
@@ -23,14 +23,15 @@ int main()
     {
         //Draw/update all the object
         BeginDrawing();
+        ClearBackground(background);    
             
-        pause.Update();
+        pause.Update(1, 1);
         simulation.Draw();
 
         DrawText(TextFormat("live cells: %d", liveCells), 10, 730, 20, WHITE);
         DrawText(TextFormat("generation: %d", generation), 10, 760, 20, WHITE);
 
-        if(!pause.paused)
+        if(pause.content == "Play")
         {
             simulation.NextGeneation();
             generation++;
@@ -39,8 +40,7 @@ int main()
         {
             simulation.ClickToogleCells();
         }
-
-        ClearBackground(background);        
+    
         EndDrawing();
         
         liveCells = simulation.grid.CountLiveCells();

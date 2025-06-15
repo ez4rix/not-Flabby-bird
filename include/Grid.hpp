@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Pause.hpp"
+#include "Button.hpp"
 #include "Click.hpp"
 
 class Grid
